@@ -1,0 +1,105 @@
+<html>
+<body>
+<canvas width="1400" height="700" id="canvas" onmousedown="mouseDown()" onmouseup="mouseUp()"></canvas>
+<script>
+
+// document.getElementById("canvas").addEventListener("click", myFunction);
+
+function mouseDown() {
+  multiplier = 10;
+  // particleCap = 500;
+  // tickSpeed = 4;
+}
+
+function mouseUp() {
+  multiplier = 1;
+  // particleCap = 0;
+  // tickSpeed = 1;
+}
+
+// shim layer with setTimeout fallback
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          window.oRequestAnimationFrame      ||
+          window.msRequestAnimationFrame     ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+var canvas = document.getElementById('canvas');
+var particles = [];
+var tick = 0;
+var multiplier = 1;
+var particleCap = 0;
+// var tickSpeed = 1;
+
+function loop() {
+    window.requestAnimFrame(loop);
+    createParticles(multiplier);
+    updateParticles();
+    killParticles();
+    drawParticles();
+}
+
+window.requestAnimFrame(loop);
+
+function createParticles(multiplier) {
+    //check on every 10th tick check
+    if(tick % 4 == 0) {
+        //add particle if fewer than 100
+        if(particles.length < (400 + particleCap)) {
+            particles.push({
+                    x: Math.random()*canvas.width, //between 0 and canvas width
+                    y: 0,
+                    speedy: 2+Math.random()*3, //between 2 and 5
+                    speedx: -0.5+Math.random()*(2*multiplier), //between 2 and 5
+                    radius: 2+Math.random()*2, //between 5 and 10
+                    color: "white"
+            });
+        }
+    }
+}
+
+function updateParticles() {
+  for (var i in particles) {
+    var part = particles[i];
+    part.y += part.speedy;
+    part.x += part.speedx;
+  }
+}
+
+function killParticles() {
+    for(var i in particles) {
+        var part = particles[i];
+        if(part.y > canvas.height) {
+          particles.splice(i, 1);
+        }
+        if(part.x > canvas.width) {
+          part.x = 0;
+        }
+    }
+}
+
+function drawParticles() {
+    var c = canvas.getContext('2d');
+    c.fillStyle = "black";
+    c.fillRect(0,0,canvas.width,canvas.height);
+    for(var i in particles) {
+        var part = particles[i];
+        c.beginPath();
+        c.arc(part.x,part.y, part.radius, 0, Math.PI*2);
+        c.closePath();
+        c.fillStyle = part.color;
+        c.fill();
+    }
+    c.fillStyle = "white";
+    c.fillText(particles.length, 5, 20);
+    c.fillText(tickSpeed, 5, 40);
+}
+
+</script>
+</body>
+</html>
