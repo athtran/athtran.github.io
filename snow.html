@@ -7,17 +7,12 @@ i<html>
 
 function mouseDown() {
   multiplier = 10;
-  // particleCap = 500;
-  // tickSpeed = 4;
 }
 
 function mouseUp() {
   multiplier = 1;
-  // particleCap = 0;
-  // tickSpeed = 1;
 }
 
-// shim layer with setTimeout fallback
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame       ||
           window.webkitRequestAnimationFrame ||
@@ -34,7 +29,6 @@ var particles = [];
 var tick = 0;
 var multiplier = 1;
 var particleCap = 0;
-// var tickSpeed = 1;
 
 function loop() {
     window.requestAnimFrame(loop);
@@ -47,10 +41,10 @@ function loop() {
 window.requestAnimFrame(loop);
 
 function createParticles(multiplier) {
-    //check on every 10th tick check
+    //check on every 4th tick check
     if(tick % 4 == 0) {
         //add particle if fewer than 100
-        if(particles.length < (400 + particleCap)) {
+        if(particles.length < 400) {
             particles.push({
                     x: Math.random()*canvas.width, //between 0 and canvas width
                     y: 0,
