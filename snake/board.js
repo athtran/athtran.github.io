@@ -32,12 +32,12 @@
   };
 
   Board.prototype.checkGameOver = function () {
-    if (this.snake.segments[0][0] < 0                   ||
-        this.snake.segments[0][0] > (this.gridSize - 1) ||
-        this.snake.segments[0][1] < 0                   ||
-        this.snake.segments[0][1] > (this.gridSize - 1)) {
-      this.gameOver = true;
-    }
+    // if (this.snake.segments[0][0] < 0                   ||
+    //     this.snake.segments[0][0] > (this.gridSize - 1) ||
+    //     this.snake.segments[0][1] < 0                   ||
+    //     this.snake.segments[0][1] > (this.gridSize - 1)) {
+    //   this.gameOver = true;
+    // }
     for (var i = 1; i < this.snake.segments.length; i++) {
       if (this.snake.segments[i].join() === this.snake.segments[0].join()) {
         this.gameOver = true;

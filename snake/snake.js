@@ -3,7 +3,7 @@
 
   Snake = window.Snake = function () {
     this.dir = "N";
-    this.segments = [[15,10], [15,11], [15,12]];
+    this.segments = [[15,10], [15,11], [15,12], [15,13]];
     this.eatenApple = false;
   };
 
@@ -48,15 +48,19 @@
     switch(dir) {
       case "N":
         newHead[0] -= 1;
+        if (newHead[0] == -1) { newHead[0] = 19; }
         break;
       case "S":
         newHead[0] += 1;
+        if (newHead[0] == 20) { newHead[0] = 0; }
         break;
       case "E":
         newHead[1] += 1;
+        if (newHead[1] == 20) { newHead[1] = 0; }
         break;
       case "W":
         newHead[1] -= 1;
+        if (newHead[1] == -1) { newHead[1] = 19; }
         break;
     }
     segments.unshift(newHead);

@@ -16,6 +16,7 @@
     this.renderBoard();
     this.buttonDown = false;
     $(window).on("keydown", this.keyBinding.bind(this));
+    this.appleCount = 0;
 
     this.timerID = 0;
     this.timerID = window.setInterval(this.step.bind(this), speed);
@@ -26,9 +27,6 @@
     if (this.board.gameOver) {
       window.clearInterval(this.timerID);
       this.timerID = null;
-      // debugger;
-      // this.board = new Board(20);
-      // this.bfoard.gameOver = false;
       this.renderGameOver();
     } else {
       this.board.update();
@@ -64,8 +62,8 @@
   };
 
   View.prototype.renderGameOver = function () {
-    var $gameOverMessage = $('<div>').addClass("game-over");
-    this.$el.append($gameOverMessage);
+    // var $gameOverMessage = $('<div>').addClass("game-over");
+    // this.$el.append($gameOverMessage);
   };
 
   View.prototype.restartGame = function () {
