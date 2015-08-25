@@ -10,6 +10,7 @@
 
   View = window.View = function(board, $el, speed){
     this.board = board;
+    this.speed = speed;
     this.$el = $el;
     this.setupGrid();
     this.renderBoard();
@@ -23,11 +24,12 @@
 
   View.prototype.step = function (){
     if (this.board.gameOver) {
-      // window.clearInterval(this.timerID);
+      window.clearInterval(this.timerID);
+      this.timerID = null;
       // debugger;
-      this.board = new Board(20);
-      this.board.gameOver = false;
-      // this.renderGameOver();
+      // this.board = new Board(20);
+      // this.bfoard.gameOver = false;
+      this.renderGameOver();
     } else {
       this.board.update();
       this.renderBoard();
@@ -68,6 +70,9 @@
 
   View.prototype.restartGame = function () {
     this.board = new Board(20);
+    if (!this.timerID) {
+      this.timerID = window.setInterval(this.step.bind(this), this.speed);
+    }
   };
 
   View.prototype.renderStats = function () {
