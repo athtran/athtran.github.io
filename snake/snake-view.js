@@ -69,6 +69,8 @@
   };
 
   View.prototype.restartGame = function () {
+    this.$el.empty();
+    this.setupGrid();
     this.board = new Board(20);
     if (!this.timerID) {
       this.timerID = window.setInterval(this.step.bind(this), this.speed);
