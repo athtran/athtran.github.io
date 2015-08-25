@@ -55,6 +55,8 @@
         $lis.eq(i).addClass("snake");
       } else if (boardRendering[+$lis.eq(i).attr("x-pos")][+$lis.eq(i).attr("y-pos")] === "A") {
         $lis.eq(i).addClass("apple");
+      } else if (boardRendering[+$lis.eq(i).attr("x-pos")][+$lis.eq(i).attr("y-pos")] === "R") {
+        $lis.eq(i).addClass("rotten");
       } else {
         $lis.eq(i).removeClass("snake apple");
       }

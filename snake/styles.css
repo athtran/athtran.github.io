@@ -56,6 +56,13 @@ li.apple {
   background-color: red;
 }
 
+li.rotten {
+  height: 14px;
+  width: 14px;
+  margin: 3px;
+  background-color: green;
+}
+
 li.snake {
   height: 14px;
   width: 14px;
