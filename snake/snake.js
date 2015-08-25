@@ -59,14 +59,13 @@
         newHead[1] -= 1;
         break;
     }
-    // debugger;
     segments.unshift(newHead);
     return eatenApple;
   };
-
-  Coord.equals = function (coord1, coord2) {
-    return coord1.join() === coord2.join();
-  };
+  //
+  // Coord.equals = function (coord1, coord2) {
+  //   return coord1.join() === coord2.join();
+  // };
 
   OPPOSITE = {
     "N": "S",

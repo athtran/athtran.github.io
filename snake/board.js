@@ -35,7 +35,7 @@
     if (this.snake.segments[0][0] < 0                   ||
         this.snake.segments[0][0] > (this.gridSize - 1) ||
         this.snake.segments[0][1] < 0                   ||
-        this.snake.segments[0][1] > (this.gridSize)) {
+        this.snake.segments[0][1] > (this.gridSize - 1)) {
       this.gameOver = true;
     }
     for (var i = 1; i < this.snake.segments.length; i++) {
@@ -57,7 +57,9 @@
     this.snake.segments.forEach( function (coord) {
       var coordX = coord[0];
       var coordY = coord[1];
-      board.grid[coordX][coordY] = "S";
+      if (board.grid[coordX]) {
+        board.grid[coordX][coordY] = "S";
+      }
     });
 
     board.grid[this.apple[0]][this.apple[1]] = "A";

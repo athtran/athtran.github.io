@@ -12,9 +12,7 @@
     <script type="text/javascript" src="./board.js"></script>
 
     <div class="difficulty">
-      <div class="easy">Normal</div>
-      <div class="medium">Fast</div>
-      <div class="hard">Super Fast</div>
+      <div class="medium">Start</div>
     </div>
 
     <div class="game">
@@ -23,29 +21,12 @@
     </div<>
 
     <script type="text/javascript">
-      var board =  new Board(20);
-
-      $('.easy').one("click", function function_name(argument) {
-        var view = new View(board, $("div.snake-game"), 250);
-        $('.easy').addClass("active")
-        $('.medium').off()
-        $('.hard').off()
+      $('.medium').on("click", function function_name(argument) {
+        var view = new View(new Board(20), $("div.snake-game"), 80);
+        // $('.easy').off()
+        // $('.medium').addClass("active")
+        // $('.hard').off()
       });
-
-      $('.medium').one("click", function function_name(argument) {
-        var view = new View(board, $("div.snake-game"), 80);
-        $('.easy').off()
-        $('.medium').addClass("active")
-        $('.hard').off()
-      });
-
-      $('.hard').one("click", function function_name(argument) {
-        var view = new View(board, $("div.snake-game"), 30);
-        $('.easy').off()
-        $('.medium').off()
-        $('.hard').addClass("active")
-      });
-
     </script>
   </body>
 </html>

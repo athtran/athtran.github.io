@@ -1,10 +1,12 @@
 (function () {
   var View = window.View || {};
 
-  KEYS = { 65: "W",
-           83: "S",
-           68: "E",
-           87: "N"};
+  KEYS = {
+          65: "W",
+          83: "S",
+          68: "E",
+          87: "N"
+         };
 
   View = window.View = function(board, $el, speed){
     this.board = board;
@@ -21,8 +23,11 @@
 
   View.prototype.step = function (){
     if (this.board.gameOver) {
-      window.clearInterval(this.timerID);
-      this.renderGameOver();
+      // window.clearInterval(this.timerID);
+      // debugger;
+      this.board = new Board(20);
+      this.board.gameOver = false;
+      // this.renderGameOver();
     } else {
       this.board.update();
       this.renderBoard();
@@ -61,6 +66,10 @@
     this.$el.append($gameOverMessage);
   };
 
+  View.prototype.restartGame = function () {
+    this.board = new Board(20);
+  };
+
   View.prototype.renderStats = function () {
     var $stats = $('.stats');
     $stats.text("Apples Eaten: " + this.board.applesEaten);
@@ -69,5 +78,8 @@
   View.prototype.keyBinding = function (event) {
     var newDir = KEYS[event.keyCode];
     if (newDir) { this.board.snake.turn(newDir); }
+    if (event.keyCode == 82) {
+      this.restartGame();
+    }
   };
 })();
