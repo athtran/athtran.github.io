@@ -1,8 +1,8 @@
 (function () {
   var Snake = window.Snake || {};
 
-  Snake = window.Snake = function (segments) {
-    this.dir = "N";
+  Snake = window.Snake = function (segments, dir) {
+    this.dir = dir;
     this.segments = segments;
     this.eatenApple = false;
   };

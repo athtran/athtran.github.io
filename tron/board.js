@@ -2,8 +2,8 @@
   var Board = window.Board || {};
 
   Board = window.Board = function (gridSize) {
-    this.snake = new Snake([[15,10]]);
-    // this.snake2 = new Snake();
+    this.snake = new Snake([[10,15]], "W");
+    this.snake2 = new Snake([[10,5]], "E");
     this.gridSize = gridSize;
     this.grid = Board.setupGrid(gridSize);
     this.gameOver = false;
@@ -20,12 +20,10 @@
   };
 
   Board.prototype.update = function (){
-    if (!this.justEaten) {
-      this.checkGameOver();
-    }
+    // this.checkGameOver();
 
-    this.justEaten = false;
     this.snake.move();
+    this.snake2.move();
   };
 
   Board.prototype.checkGameOver = function () {
@@ -50,6 +48,14 @@
       var coordY = coord[1];
       if (board.grid[coordX]) {
         board.grid[coordX][coordY] = "S";
+      }
+    });
+
+    this.snake2.segments.forEach( function (coord) {
+      var coordX = coord[0];
+      var coordY = coord[1];
+      if (board.grid[coordX]) {
+        board.grid[coordX][coordY] = "A";
       }
     });
 

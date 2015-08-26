@@ -55,8 +55,6 @@
         $lis.eq(i).addClass("snake");
       } else if (boardRendering[+$lis.eq(i).attr("x-pos")][+$lis.eq(i).attr("y-pos")] === "A") {
         $lis.eq(i).addClass("apple");
-      } else if (boardRendering[+$lis.eq(i).attr("x-pos")][+$lis.eq(i).attr("y-pos")] === "R") {
-        $lis.eq(i).addClass("rotten");
       } else {
         $lis.eq(i).removeClass("snake apple");
       }
@@ -86,6 +84,7 @@
   View.prototype.keyBinding = function (event) {
     var newDir = KEYS[event.keyCode];
     if (newDir) { this.board.snake.turn(newDir); }
+    if (newDir) { this.board.snake2.turn(newDir); }
     if (event.keyCode == 82) {
       this.restartGame();
     }
