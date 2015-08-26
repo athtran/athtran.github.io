@@ -15,22 +15,21 @@
     </div>
 
     <div class="game">
-      <div class="instructions">
+      <!-- <div class="instructions">
         <p>Welcome to a slight variation of the classic game, Snake.</p>
         <p>Your snake can wrap around the grid. Avoid rotten apples though!</p>
         <p>WASD keys to move, R to restart.</p>
-      </div>
+      </div> -->
       <div class="snake-game button">
         <div class="start">Start</div>
       </div>
-      <div class="stats"></div>
     </div<>
 
     <script type="text/javascript">
       $('.snake-game').one("click", function function_name(argument) {
         $('.start').remove();
         $('.snake-game').removeClass('button');
-        var view = new View(new Board(20), $("div.snake-game"), 80);
+        var view = new View(30, $("div.snake-game"), 120);
       });
     </script>
   </body>

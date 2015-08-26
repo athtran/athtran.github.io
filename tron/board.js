@@ -2,8 +2,8 @@
   var Board = window.Board || {};
 
   Board = window.Board = function (gridSize) {
-    this.snake = new Snake([[10,15]], "W");
-    this.snake2 = new Snake([[10,5]], "E");
+    this.snake = new Snake([[Math.floor(gridSize/2),Math.floor(gridSize/4)]], "E", gridSize);
+    this.snake2 = new Snake([[Math.floor(gridSize/2),Math.floor(gridSize*3/4)]], "W", gridSize);
     this.gridSize = gridSize;
     this.grid = Board.setupGrid(gridSize);
     this.gameOver = false;
@@ -20,7 +20,7 @@
   };
 
   Board.prototype.update = function (){
-    // this.checkGameOver();
+    this.checkGameOver();
 
     this.snake.move();
     this.snake2.move();
@@ -29,7 +29,17 @@
   Board.prototype.checkGameOver = function () {
     for (var j = 1; j < this.snake.segments.length; j++) {
       if (this.snake.segments[j].join() === this.snake.segments[0].join()) {
-        this.gameOver = true;
+        this.gameOver = true; // snake2 wins
+      } else if (this.snake.segments[j].join() === this.snake2.segments[0].join() ) {
+        this.gameOver = true; //snake1 wins
+      }
+    }
+
+    for (var i = 1; i < this.snake2.segments.length; i++) {
+      if (this.snake2.segments[i].join() === this.snake.segments[0].join() ){
+        this.gameOver = true; //snake 2 wins
+      } else if (this.snake2.segments[i].join() === this.snake2.segments[0].join() ) {
+        this.gameOver = true; //snake1 wins
       }
     }
   };

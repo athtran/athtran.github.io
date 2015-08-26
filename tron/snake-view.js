@@ -8,15 +8,23 @@
           87: "N"
          };
 
-  View = window.View = function(board, $el, speed){
-    this.board = board;
+  KEYS2 = {
+          37: "W",
+          40: "S",
+          39: "E",
+          38: "N"
+         };
+
+
+  View = window.View = function(size, $el, speed){
+    this.size = size;
+    this.board = new Board(size);
     this.speed = speed;
     this.$el = $el;
     this.setupGrid();
     this.renderBoard();
     this.buttonDown = false;
     $(window).on("keydown", this.keyBinding.bind(this));
-    this.appleCount = 0;
 
     this.timerID = 0;
     this.timerID = window.setInterval(this.step.bind(this), speed);
@@ -31,7 +39,6 @@
     } else {
       this.board.update();
       this.renderBoard();
-      this.renderStats();
     }
   };
 
@@ -69,22 +76,17 @@
   View.prototype.restartGame = function () {
     this.$el.empty();
     this.setupGrid();
-    this.board = new Board(20);
+    this.board = new Board(this.size);
     if (!this.timerID) {
       this.timerID = window.setInterval(this.step.bind(this), this.speed);
     }
   };
 
-  View.prototype.renderStats = function () {
-    var $stats = $('.stats');
-    $stats.text(this.board.applesEaten);
-    if (this.board.applesEaten > 9) { $stats.css('margin-left', '-25px'); }
-  };
-
   View.prototype.keyBinding = function (event) {
     var newDir = KEYS[event.keyCode];
+    var newDir2 = KEYS2[event.keyCode];
     if (newDir) { this.board.snake.turn(newDir); }
-    if (newDir) { this.board.snake2.turn(newDir); }
+    if (newDir2) { this.board.snake2.turn(newDir2); }
     if (event.keyCode == 82) {
       this.restartGame();
     }

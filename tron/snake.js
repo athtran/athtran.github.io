@@ -1,14 +1,15 @@
 (function () {
   var Snake = window.Snake || {};
 
-  Snake = window.Snake = function (segments, dir) {
+  Snake = window.Snake = function (segments, dir, gridSize) {
     this.dir = dir;
     this.segments = segments;
     this.eatenApple = false;
+    this.gridSize = gridSize;
   };
 
   Snake.prototype.move = function () {
-    this.eatenApple = Coord.plus(this.segments, this.dir, this.eatenApple);
+    this.eatenApple = Coord.plus(this.segments, this.dir, this.eatenApple, this.gridSize);
   };
 
 
@@ -38,24 +39,24 @@
     }
   };
 
-  Coord.plus = function (segments, dir, eatenApple) {
+  Coord.plus = function (segments, dir, eatenApple, gridSize) {
     var newHead = segments[0].slice(0);
     switch(dir) {
       case "N":
         newHead[0] -= 1;
-        if (newHead[0] == -1) { newHead[0] = 19; }
+        if (newHead[0] == -1) { newHead[0] = gridSize - 1; }
         break;
       case "S":
         newHead[0] += 1;
-        if (newHead[0] == 20) { newHead[0] = 0; }
+        if (newHead[0] == gridSize) { newHead[0] = 0; }
         break;
       case "E":
         newHead[1] += 1;
-        if (newHead[1] == 20) { newHead[1] = 0; }
+        if (newHead[1] == gridSize) { newHead[1] = 0; }
         break;
       case "W":
         newHead[1] -= 1;
-        if (newHead[1] == -1) { newHead[1] = 19; }
+        if (newHead[1] == -1) { newHead[1] = gridSize - 1; }
         break;
     }
     segments.unshift(newHead);

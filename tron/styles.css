@@ -17,7 +17,7 @@ html, body, ul, li, h1 {
 
 .snake-game {
   position: relative;
-  width: 400px;
+  width: 600px;
   border: 5px solid black;
   transition: all 1s;
 }
@@ -34,7 +34,7 @@ html, body, ul, li, h1 {
 ul {
   margin: auto;
   display: block;
-  width: 410px;
+  width: 610px;
   list-style: none;
 }
 
