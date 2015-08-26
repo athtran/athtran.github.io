@@ -2,19 +2,18 @@
   var View = window.View || {};
 
   KEYS = {
-          65: "W",
-          83: "S",
-          68: "E",
-          87: "N"
-         };
+        65: "W",
+        83: "S",
+        68: "E",
+        87: "N"
+  };
 
   KEYS2 = {
-          37: "W",
-          40: "S",
-          39: "E",
-          38: "N"
-         };
-
+        37: "W",
+        40: "S",
+        39: "E",
+        38: "N"
+  };
 
   View = window.View = function(size, $el, speed){
     this.size = size;

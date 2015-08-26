@@ -2,10 +2,10 @@
   var Board = window.Board || {};
 
   Board = window.Board = function (gridSize) {
-    this.snake = new Snake([[Math.floor(gridSize/2),Math.floor(gridSize/4)]], "E", gridSize);
-    this.snake2 = new Snake([[Math.floor(gridSize/2),Math.floor(gridSize*3/4)]], "W", gridSize);
     this.gridSize = gridSize;
     this.grid = Board.setupGrid(gridSize);
+    this.snake = new Snake([[Math.floor(gridSize/2),Math.floor(gridSize/4)]], "E", gridSize, false);
+    this.snake2 = new Snake([[Math.floor(gridSize/2),Math.floor(gridSize*3/4)]], "W", gridSize, this.grid);
     this.gameOver = false;
   };
 

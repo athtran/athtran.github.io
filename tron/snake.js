@@ -1,15 +1,27 @@
 (function () {
   var Snake = window.Snake || {};
 
-  Snake = window.Snake = function (segments, dir, gridSize) {
+  Snake = window.Snake = function (segments, dir, gridSize, grid) {
     this.dir = dir;
     this.segments = segments;
     this.eatenApple = false;
     this.gridSize = gridSize;
+    this.grid = grid;
   };
 
   Snake.prototype.move = function () {
-    this.eatenApple = Coord.plus(this.segments, this.dir, this.eatenApple, this.gridSize);
+    if (this.grid) {
+      this.dir = this.computerMove();
+    }
+    Coord.plus(this.segments, this.dir, this.gridSize);
+  };
+
+  Snake.prototype.computerMove = function () {
+    newPos = Coord.plus(this.segments.slice(0), this.dir, this.gridSize) ;
+    if (this.grid[newPos[0]][newPos[1]] === 'S' || this.grid[newPos[0]][newPos[1]] === "A"){
+      return "N";
+    }
+    return this.dir;
   };
 
 
@@ -39,7 +51,7 @@
     }
   };
 
-  Coord.plus = function (segments, dir, eatenApple, gridSize) {
+  Coord.plus = function (segments, dir, gridSize) {
     var newHead = segments[0].slice(0);
     switch(dir) {
       case "N":
@@ -60,7 +72,7 @@
         break;
     }
     segments.unshift(newHead);
-    return eatenApple;
+    return newHead;
   };
   //
   // Coord.equals = function (coord1, coord2) {
