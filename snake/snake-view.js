@@ -64,8 +64,8 @@
   };
 
   View.prototype.renderGameOver = function () {
-    // var $gameOverMessage = $('<div>').addClass("game-over");
-    // this.$el.append($gameOverMessage);
+    var $gameOverMessage = $('<div>').addClass("game-over");
+    this.$el.append($gameOverMessage);
   };
 
   View.prototype.restartGame = function () {
@@ -79,7 +79,8 @@
 
   View.prototype.renderStats = function () {
     var $stats = $('.stats');
-    $stats.text("Apples Eaten: " + this.board.applesEaten);
+    $stats.text(this.board.applesEaten);
+    if (this.board.applesEaten > 9) { $stats.css('margin-left', '-25px'); }
   };
 
   View.prototype.keyBinding = function (event) {
