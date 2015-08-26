@@ -33,7 +33,7 @@
       this.applesEaten += 1;
       this.justEaten = true;
       this.rottenApples.push(this.apple);
-      this.apple = Board.generateApple(this.snake);
+      this.apple = Board.generateApple(this.snake, this.rottenApples);
     }
   };
 
@@ -83,9 +83,9 @@
     return this.grid;
   };
 
-  Board.generateApple = function (snake){
+  Board.generateApple = function (snake, rottenApples){
     var newApple = Board.randomApple();
-    while (Board.checkApple(newApple, snake) === false) {
+    while (Board.checkApple(newApple, snake, rottenApples) === false) {
       newApple = Board.randomApple();
     }
 
@@ -93,16 +93,22 @@
   };
 
   Board.randomApple = function (){
-    return [Math.floor(Math.random()*10), Math.floor(Math.random()*10)];
-  };0
+    return [Math.floor(Math.random()*19), Math.floor(Math.random()*19)];
+  };
 
-  Board.checkApple = function (apple, snake) {
+  Board.checkApple = function (apple, snake, rottenApples) {
     for (var i = 0; i < snake.segments.length; i++) {
       if (apple.join() === snake.segments[i].join()){
         return false;
       }
     }
-
+    if (rottenApples) {
+      for (var j = 0; j < rottenApples.length; j++) {
+        if (apple.join() === rottenApples[j].join()){
+          return false;
+        }
+      }
+    }
     return true;
   };
 })();
