@@ -1,6 +1,20 @@
 (function () {
   var Snake = window.Snake || {};
 
+  DECISION_DIRS = {
+    "N" : { 'left': 'W', 'right': 'E' },
+    "W" : { 'left': 'S', 'right': 'N' },
+    "S" : { 'left': 'E', 'right': 'W' },
+    "E" : { 'left': 'N', 'right': 'S' }
+  };
+
+  OPPOSITE_DIRS = {
+    "N" : "S",
+    "S" : "N",
+    "W" : "E",
+    "E" : "W"
+  }
+
   Snake = window.Snake = function (segments, dir, gridSize, grid) {
     this.dir = dir;
     this.segments = segments;
@@ -16,10 +30,53 @@
     Coord.plus(this.segments, this.dir, this.gridSize);
   };
 
+  Snake.CalculateAreaLeft = function (pos, dir, grid) {
+    newPos = Coord.plus([pos], dir, grid.length);
+    var y = 1;
+    while (grid[newPos[0]][newPos[1]] === '.' && y < 30){
+      newPos = Coord.plus([newPos], dir, grid.length);
+      y ++;
+    }
+    var x = 1;
+    newPos = Coord.plus([newPos], OPPOSITE_DIRS[dir], grid.length);
+    newPos = Coord.plus([newPos], DECISION_DIRS[dir].left, grid.length);
+    while (grid[newPos[0]][newPos[1]] === '.' && x < 30){
+      newPos = Coord.plus([newPos], DECISION_DIRS[dir].left, grid.length);
+      x ++;
+    }
+
+    return x*y;
+  },
+
+  Snake.CalculateAreaRight = function (pos, dir, grid) {
+    newPos = Coord.plus([pos], dir, grid.length);
+    var y = 1;
+    while (grid[newPos[0]][newPos[1]] === '.' && y < 30){
+      newPos = Coord.plus([newPos], dir, grid.length);
+      y ++;
+    }
+    var x = 1;
+    newPos = Coord.plus([newPos], OPPOSITE_DIRS[dir], grid.length);
+    newPos = Coord.plus([newPos], DECISION_DIRS[dir].right, grid.length);
+    while (grid[newPos[0]][newPos[1]] === '.' && x < 30){
+      newPos = Coord.plus([newPos], DECISION_DIRS[dir].right, grid.length);
+      x ++;
+    }
+
+    return x*y;
+  },
+
   Snake.prototype.computerMove = function () {
-    newPos = Coord.plus(this.segments.slice(0), this.dir, this.gridSize) ;
+    newPos = Coord.plus(this.segments.slice(0, 1), this.dir, this.gridSize) ;
     if (this.grid[newPos[0]][newPos[1]] === 'S' || this.grid[newPos[0]][newPos[1]] === "A"){
-      return "N";
+      var left = Snake.CalculateAreaLeft(this.segments.slice(0)[0], DECISION_DIRS[this.dir].left, this.grid);
+      var right = Snake.CalculateAreaRight(this.segments.slice(0)[0], DECISION_DIRS[this.dir].right, this.grid);
+
+      if (left > right) {
+        return DECISION_DIRS[this.dir].left;
+      } else {
+        return DECISION_DIRS[this.dir].right;
+      }
     }
     return this.dir;
   };
