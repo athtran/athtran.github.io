@@ -1,0 +1,98 @@
+html, body, ul, li, h1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  text-align: inherit;
+}
+
+.game {
+  margin: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 40px;
+  width: 600px;
+}
+
+.snake-game {
+  position: relative;
+  width: 400px;
+  border: 5px solid black;
+  transition: all 1s;
+}
+
+.stats {
+  margin-left: 20px;
+  position: relative;
+  margin-left: -17px;
+  margin-top: 7px;
+  color: #333;
+  font-weight: bold;
+}
+
+ul {
+  margin: auto;
+  display: block;
+  width: 410px;
+  list-style: none;
+}
+
+li {
+  float: left;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+
+li.apple {
+  height: 14px;
+  width: 14px;
+  margin: 3px;
+  background-color: red;
+  border-radius: 45%;
+}
+
+li.rotten {
+  height: 14px;
+  width: 14px;
+  margin: 3px;
+  background-color: green;
+  border-radius: 45%;
+}
+
+li.snake {
+  height: 14px;
+  width: 14px;
+  margin: 3px;
+  background-color: black;
+  border-radius: 10%;
+}
+
+.game-over {
+  top: 150px;
+  display: block;
+  width: 400px;
+  height: 100px;
+  position: relative;
+  background-image: url("gameover.png");
+  background-size: 100% 100%;
+}
+
+p {
+  font-family: helvetica;
+  font-weight: lighter;
+}
+
+.start {
+  font-size: 40px;
+  text-align: center;
+  font-weight: lighter;
+  font-family: helvetica;
+  margin-top: 40px;
+}
+
+.button:hover {
+  background-color: #4B7EF7;
+}
