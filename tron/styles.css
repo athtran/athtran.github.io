@@ -23,7 +23,8 @@ html, body, ul, li, h1 {
   transition: all 1s;
   display: flex;
   flex-direction: column;
-  background-color: #aaa;
+  background-color: #777;
+  height: 420px;
 }
 
 
@@ -69,8 +70,8 @@ p {
   font-size: 40px;
   text-align: center;
   font-weight: lighter;
-  font-family: helvetica;
-  margin-top: 40px;
+  font-family: 'Orbitron';
+  margin-top: 165px;
 }
 
 .button:hover {
@@ -96,4 +97,16 @@ p {
 
 .tile {
   transition: all 1s;
+}
+
+.title {
+  font-size: 40px;
+  text-align: center;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+p {
+  color: #ddd;
+  font-family: 'Orbitron', sans-serif;
 }
