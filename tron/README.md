@@ -2,7 +2,7 @@
 
 Classic Arcade Game.
 
-![demo_gif](/tron.gif)
+![demo_gif](/tron/tron.gif)
 
 Built in:
 
