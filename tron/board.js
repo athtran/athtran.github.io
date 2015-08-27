@@ -22,9 +22,24 @@
   Board.prototype.update = function (){
     this.checkGameOver();
 
+    if (this.snake.boost) {
+      this.snake.boost = this.snake.boost - 1;
+      this.snake.move();
+    }
+
+    if (Math.random()*100 < 2) {
+      this.snake2.addBoost();
+    }
+
+    if (this.snake2.boost) {
+      this.snake2.boost = this.snake2.boost - 1;
+      this.snake2.move();
+    }
+
     this.snake.move();
     this.snake2.move();
   };
+
 
   Board.prototype.checkGameOver = function () {
     for (var j = 1; j < this.snake.segments.length; j++) {

@@ -13,7 +13,7 @@
     "S" : "N",
     "W" : "E",
     "E" : "W"
-  }
+  };
 
   Snake = window.Snake = function (segments, dir, gridSize, grid) {
     this.dir = dir;
@@ -21,6 +21,8 @@
     this.eatenApple = false;
     this.gridSize = gridSize;
     this.grid = grid;
+    this.boost = false;
+    this.boostsLeft = 5;
   };
 
   Snake.prototype.move = function () {
@@ -28,6 +30,13 @@
       this.dir = this.computerMove();
     }
     Coord.plus(this.segments, this.dir, this.gridSize);
+  };
+
+  Snake.prototype.addBoost = function () {
+    if (this.boostsLeft > 0) {
+      this.boost = 6;
+      this.boostsLeft --;
+    }
   };
 
   Snake.CalculateAreaLeft = function (pos, dir, grid) {
@@ -64,7 +73,7 @@
     }
 
     return x*y;
-  },
+  };
 
   Snake.prototype.computerMove = function () {
     newPos = Coord.plus(this.segments.slice(0, 1), this.dir, this.gridSize) ;
