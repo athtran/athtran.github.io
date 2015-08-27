@@ -26,6 +26,7 @@
     if (this.snake.boost) {
       this.snake.boost = this.snake.boost - 1;
       this.snake.move();
+      this.checkGameOver();
     }
 
     if (Math.random()*100 < 2) {
@@ -35,6 +36,7 @@
     if (this.snake2.boost) {
       this.snake2.boost = this.snake2.boost - 1;
       this.snake2.move();
+      this.checkGameOver();
     }
 
     this.snake.move();
