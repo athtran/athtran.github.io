@@ -114,9 +114,9 @@
     var newDir = KEYS[event.keyCode];
     var newDir2 = KEYS2[event.keyCode];
     if (newDir) { this.board.snake.turn(newDir); }
-    if (newDir2) { this.board.snake2.turn(newDir2); }
+    // if (newDir2) { this.board.snake2.turn(newDir2); }
     if (event.keyCode === 32) { this.board.snake.addBoost(); }
-    if (event.keyCode === 13) { this.board.snake2.addBoost(); }
+    // if (event.keyCode === 13) { this.board.snake2.addBoost(); }
     if (event.keyCode == 82) {
       this.restartGame();
     }
