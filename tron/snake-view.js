@@ -88,7 +88,7 @@
   };
 
   View.prototype.renderGameOver = function () {
-    if (this.winner === 1) {
+    if (this.board.winner === 1) {
       $('.tile').css('background-color', 'blue');
       setTimeout(function () {
         $('.tile').css('background-color', 'black');
