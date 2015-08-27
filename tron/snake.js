@@ -32,6 +32,21 @@
     Coord.plus(this.segments, this.dir, this.gridSize);
   };
 
+  Snake.prototype.futureMove = function() {
+    futurePos = Coord.plus(this.segments.slice(0,1), this.dir, this.gridSize);
+    return futurePos;
+  };
+
+  Snake.prototype.turn = function (dir) {
+    var nDir = Coord.dir(dir);
+    if ([this.segments[0][0] + nDir[0], this.segments[0][1] + nDir[1]].join() === this.segments[1].join()) {
+
+    } else {
+      this.dir = dir;
+    }
+
+  };
+
   Snake.prototype.addBoost = function () {
     if (this.boostsLeft > 0) {
       this.boost = 6;
@@ -90,16 +105,6 @@
     return this.dir;
   };
 
-
-  Snake.prototype.turn = function (dir) {
-    var nDir = Coord.dir(dir);
-    if ([this.segments[0][0] + nDir[0], this.segments[0][1] + nDir[1]].join() === this.segments[1].join()) {
-
-    } else {
-      this.dir = dir;
-    }
-
-  };
 
   function Coord () {
   }

@@ -38,6 +38,8 @@
     } else {
       this.board.update();
       this.renderBoard();
+      this.renderPlayer1Stats();
+      this.renderPlayer2Stats();
     }
   };
 
@@ -45,7 +47,7 @@
     for (var i = 0; i < this.board.gridSize; i++) {
       var $ul = $("<ul>");
       for (var j = 0; j < this.board.gridSize; j++) {
-        var $li = $("<li>").attr("x-pos", i).attr("y-pos", j);
+        var $li = $("<li>").attr("x-pos", i).attr("y-pos", j).addClass('tile');
         $ul.append($li);
       }
 
@@ -58,18 +60,45 @@
     $lis = this.$el.children().children();
     for (var i = 0; i < $lis.length; i++) {
       if (boardRendering[+$lis.eq(i).attr("x-pos")][+$lis.eq(i).attr("y-pos")] === "S") {
-        $lis.eq(i).addClass("snake");
+        $lis.eq(i).addClass("snake").removeClass('tile');
       } else if (boardRendering[+$lis.eq(i).attr("x-pos")][+$lis.eq(i).attr("y-pos")] === "A") {
-        $lis.eq(i).addClass("apple");
+        $lis.eq(i).addClass("apple").removeClass('tile');
       } else {
         $lis.eq(i).removeClass("snake apple");
       }
     }
   };
 
+  View.prototype.renderPlayer1Stats = function () {
+    var $stats = $('.stats1');
+    $stats.empty();
+    for (var i = 0; i < this.board.snake.boostsLeft; i++) {
+      $block = $('<li>').addClass('boost1');
+      $stats.append($block);
+    }
+  };
+
+  View.prototype.renderPlayer2Stats = function () {
+    var $stats = $('.stats2');
+    $stats.empty();
+    for (var i = 0; i < this.board.snake2.boostsLeft; i++) {
+      $block = $('<li>').addClass('boost2');
+      $stats.append($block);
+    }
+  };
+
   View.prototype.renderGameOver = function () {
-    // var $gameOverMessage = $('<div>').addClass("game-over");
-    // this.$el.append($gameOverMessage);
+    if (this.winner === 1) {
+      $('.tile').css('background-color', 'blue');
+      setTimeout(function () {
+        $('.tile').css('background-color', 'black');
+      }, 400);
+    } else {
+      $('.tile').css('background-color', 'red');
+      setTimeout(function () {
+        $('.tile').css('background-color', 'black');
+      }, 400);
+    }
   };
 
   View.prototype.restartGame = function () {

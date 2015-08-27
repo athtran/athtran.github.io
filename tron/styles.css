@@ -11,9 +11,10 @@ html, body, ul, li, h1 {
   margin: auto;
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   top: 40px;
-  width: 600px;
+  width: 430px;
 }
 
 .snake-game {
@@ -42,11 +43,11 @@ li {
 
 
 li.apple {
-  background-color: #11BCF5;
+  background-color: #F54A11;
 }
 
 li.snake {
-  background-color: #F54A11;
+  background-color: #11BCF5;
 }
 
 .game-over {
@@ -74,4 +75,25 @@ p {
 
 .button:hover {
   background-color: #4B7EF7;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.boost1 {
+  margin-left: 5px;
+  background-color: blue;
+  width: 20px;
+}
+
+.boost2 {
+  margin-right: 5px;
+  background-color: red;
+  width: 20px;
+}
+
+.tile {
+  transition: all 1s;
 }

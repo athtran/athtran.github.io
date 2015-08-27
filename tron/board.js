@@ -45,8 +45,10 @@
     for (var j = 1; j < this.snake.segments.length; j++) {
       if (this.snake.segments[j].join() === this.snake.segments[0].join()) {
         this.gameOver = true; // snake2 wins
+        this.winner = 1;
       } else if (this.snake.segments[j].join() === this.snake2.segments[0].join() ) {
         this.gameOver = true; //snake1 wins
+        this.winner = 2;
       }
     }
 
