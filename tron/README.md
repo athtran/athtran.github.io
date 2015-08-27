@@ -2,7 +2,7 @@
 
 Classic Arcade Game.
 
-![demo_gif](http://www.gfycat.com/ConventionalQuestionableHorseshoebat)
+![demo_gif](/tron.gif)
 
 Built in:
 
