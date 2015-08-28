@@ -2,6 +2,8 @@
 
 Classic Arcade Game.
 
+[live demo](http://athtran.github.io/tron/index.html)
+
 ![demo_gif](/tron/tron.gif)
 
 Built in:
@@ -19,4 +21,4 @@ Features an intelligence computer opponent that responds defensively. Continues 
 Players have a limited number of boosts that increases the speed of the player by 2x. Computer players will use their boosts randomly to catch the human player off guard.
 
 **Scalable Design**
-Tron can be easily scaled to support a bigger map, or more players/computer players by using modular design. 
+Tron can be easily scaled to support a bigger map, or more players/computer players by using modular design.
