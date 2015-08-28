@@ -2,7 +2,7 @@
 
 Classic Arcade Game.
 
-[live demo](http://athtran.github.io/tron/index.html)
+[Click here to play!](http://athtran.github.io/tron/index.html)
 
 ![demo_gif](/tron/tron.gif)
 
