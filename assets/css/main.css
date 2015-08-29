@@ -2572,6 +2572,18 @@
 
 /* One */
 
+	#zero:before {
+		background-image: url("../../images/banner.jpg");
+		background-position: top right;
+		background-repeat: no-repeat;
+		background-size: cover;
+		content: '';
+		display: block;
+		/*height: 15em;*/
+		height: 100vh;
+		width: 100%;
+	}
+
 	#one:before {
 		background-image: url("../../images/banner.jpg");
 		background-position: top right;
@@ -2579,7 +2591,8 @@
 		background-size: cover;
 		content: '';
 		display: block;
-		height: 15em;
+		/*height: 15em;*/
+		/*height: 100vh;*/
 		width: 100%;
 	}
 
@@ -3061,3 +3074,47 @@
 			}
 
 	}
+
+.tech-icons {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.tech-icons li {
+	display: flex !important;
+	width: 40%;
+	margin: 1em;
+}
+
+.tech-icon {
+	width: 2em;
+	height: 2em;
+	margin-right: 1em;
+	background-size: 2em;
+}
+
+.ti-ruby {
+	background-image: url("../../images/ruby.png");
+}
+.ti-rails {
+	background-image: url("../../images/rails.png");
+}
+.ti-js {
+	background-image: url("../../images/javascript.png");
+}
+.ti-bb {
+	background-image: url("../../images/backbone.png");
+}
+.ti-html {
+	background-image: url("../../images/html.png");
+}
+.ti-css {
+	background-image: url("../../images/css.png");
+}
+.ti-pg {
+	background-image: url("../../images/pg.png");
+}
+.ti-jq {
+	background-image: url("../../images/jQuery.png");
+}
