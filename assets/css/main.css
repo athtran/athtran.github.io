@@ -3118,3 +3118,27 @@
 .ti-jq {
 	background-image: url("../../images/jQuery.png");
 }
+#tron-img {
+	background-image: url("../../images/tron.jpg");
+	width: 100%;
+	background-size: 100%;
+	height: 385px;
+	opacity: 0.8;
+	transition: all 0.5s;
+}
+#tron-img:hover {
+	background-image: url("../../images/tron.gif");
+	opacity: 1;
+}
+#chess-img {
+	background-image: url("../../images/chess.jpg");
+	width: 100%;
+	background-size: 100%;
+	height: 246px;
+	opacity: 0.8;
+	transition: all 0.5s;
+}
+#chess-img:hover {
+	background-image: url("../../images/chess.gif");
+	opacity: 1;
+}
