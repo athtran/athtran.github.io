@@ -1,6 +1,6 @@
 # TRON
 
-Classic Arcade Game.
+Classic Arcade Game. In a player versus AI variant of the snake concept, the player guides a blue Light Cycle in an arena against an opponent, while avoiding trails of light left behind by both Light Cycles. The player must maneuver quickly and precisely in order to force opponents to run into walls. 
 
 [Click here to play!](http://athtran.github.io/tron/index.html)
 
