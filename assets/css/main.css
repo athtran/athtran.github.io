@@ -3087,11 +3087,15 @@
 	margin: 1em;
 }
 
+.tech-icons div {
+	padding-top: 1em;
+}
+
 .tech-icon {
-	width: 2em;
-	height: 2em;
+	width: 4em;
+	height: 4em;
 	margin-right: 1em;
-	background-size: 2em;
+	background-size: 4em;
 }
 
 .ti-ruby {
