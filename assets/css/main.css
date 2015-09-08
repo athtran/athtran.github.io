@@ -3122,6 +3122,9 @@
 .ti-jq {
 	background-image: url("../../images/jQuery.png");
 }
+.ti-node {
+	background-image: url("../../images/node.png");
+}
 #tron-img {
 	background-image: url("../../images/tron.jpg");
 	width: 100%;
@@ -3145,4 +3148,12 @@
 #chess-img:hover {
 	background-image: url("../../images/chess.gif");
 	opacity: 1;
+}
+#chattr-img {
+	background-image: url("../../images/chattr.png");
+	width: 100%;
+	background-size: 100%;
+	height: 320px;
+	opacity: 0.8;
+	transition: all 0.5s;
 }
