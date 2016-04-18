@@ -1,0 +1,9 @@
+I'm a software engineer and a recent graduate from the University of Waterloo in Canada. I have built multiple full-stack applications using a variety of technologies (Ruby, Rails, Javascript, Postgres, Mongo) and am always looking to learn new things.
+
+My latest project was an asynchronous web server that allows users to host, join, and play instances of the popular board game, The Resistance: Avalon, with each other. Players can use their computers or laptops (it's web-mobile compatible), and can play remotely over the internet or in the same room. It uses a publish/subscribe pattern and each instance listens to a shared reactive game object to synchronize game flow.
+
+I also made a clone of Pinterest, the popular photo sharing website, from scratch in 10 days. Built in Ruby on Rails and Backbone, it features custom user authentication using a salt+hash method, related photos using user generated associations, and a news feed through user follow capabilities.
+
+More details of my work can be seen on my portfolio (alantran.co) and I'd love to hear from you soon.
+
+Alan
