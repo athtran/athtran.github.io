@@ -29,7 +29,7 @@ $(document).ready(function() {
     if(e.which == 13){
       // debugger
       $('.command').hide();
-      var destination = $('input[type="text"]').val();
+      var destination = $('input[type="text"]').val().toLowerCase().trim();
       $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
       if($.inArray(destination, sectionArray) == -1){
         $('.error-command').html("&raquo; " + destination);
