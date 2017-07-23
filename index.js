@@ -18,8 +18,8 @@ $(document).ready(function() {
   }
 
   var sectionArray = [];
-
-  var redirectArray
+  var hist = [];
+  var pointer = -1;
 
   $('section').each( function(i,e) {
       sectionArray.push($(e).attr('id'));
@@ -27,23 +27,34 @@ $(document).ready(function() {
 
   $('input[type="text"]').keyup(function(e){
     if(e.which == 13){
-      // debugger
+      pointer = -1;
+      hist.unshift($('input[type="text"]').val());
       $('.command').hide();
       var destination = $('input[type="text"]').val().toLowerCase().trim();
       $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
-      if($.inArray(destination, sectionArray) == -1){
-        $('.error-command').html("&raquo; " + destination);
-        $('#error').addClass('open');
-        $('#error').siblings().removeClass('open');
-      };
-      $('.open').textTyper({
-        speed:5,
-        afterAnimation:function(){
-          $('.command').fadeIn();
-          $('input[type="text"]').focus();
-          $('input[type="text"]').val('');
-        }
-      });
+      if(destination == 'resume') {
+        window.open ('resume.pdf','_self',false)
+      } else {
+        if($.inArray(destination, sectionArray) == -1){
+          $('.error-command').html("&raquo; " + destination);
+          $('#error').addClass('open');
+          $('#error').siblings().removeClass('open');
+        };
+        $('.open').textTyper({
+          speed:5,
+          afterAnimation:function(){
+            $('.command').fadeIn();
+            $('input[type="text"]').focus();
+            $('input[type="text"]').val('');
+          }
+        });
+      }
+    } else if (e.which == 38) {
+      if (!(hist[pointer + 1] == undefined)) { pointer += 1; }
+      $('input[type="text"]').val(hist[pointer]);
+    } else if (e.which == 40) {
+      if (pointer >= 0) { pointer -= 1; }
+      $('input[type="text"]').val(hist[pointer]);
     }
   });
 });
