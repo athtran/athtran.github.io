@@ -41,7 +41,7 @@ $(document).ready(function() {
           $('#error').siblings().removeClass('open');
         };
         $('.open').textTyper({
-          speed:5,
+          speed:2,
           afterAnimation:function(){
             $('.command').fadeIn();
             $('input[type="text"]').focus();
