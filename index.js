@@ -33,7 +33,7 @@ $(document).ready(function() {
       var destination = $('input[type="text"]').val().toLowerCase().trim();
       $('section[id="' + destination + '"]').addClass('open').siblings().removeClass('open');
       if(destination == 'resume') {
-        window.open ('resume.pdf','_self',false)
+        window.open ('resume-alan_tran_2019.pdf','_self',false)
       } else {
         if($.inArray(destination, sectionArray) == -1){
           $('.error-command').html("&raquo; " + destination);
